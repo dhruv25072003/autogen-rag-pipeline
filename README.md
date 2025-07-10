@@ -40,47 +40,32 @@ All agents communicate through **AutoGen group chat** using structured message p
 
 🧪 How to Run the Project
 🔧 1. Clone the repository
-bash
-Copy
-Edit
 git clone https://github.com/yourusername/agentic-rag-pipeline.git
 cd agentic-rag-pipeline
+
 Replace yourusername with your actual GitHub username.
 
 📦 2. Set up a Python environment
-bash
-Copy
-Edit
 python -m venv venv
 source venv/bin/activate       # On Linux/Mac
 venv\Scripts\activate          # On Windows
-📥 3. Install dependencies
-bash
-Copy
-Edit
-pip install -r requirements.txt
-🔍 4. Start OpenSearch locally
-If you’re using Docker (recommended):
 
-bash
-Copy
-Edit
+📥 3. Install dependencies
+pip install -r requirements.txt
+
+
+🔍 4. Start OpenSearch locally
 docker run -d -p 9200:9200 -e "discovery.type=single-node" -e "plugins.security.disabled=true" opensearchproject/opensearch:latest
-Or use your local OpenSearch setup if already configured.
+
 
 🚀 5. Run the agentic RAG pipeline
-bash
-Copy
-Edit
-python app/rag_runner.py
-This script will orchestrate your AutoGen agents to extract, embed, index, retrieve, and answer using local LLMs or Gemini API.
+python (whatever is your file name).py
+(Make sure the directory in which file is opened is selected in the terminal using cd)
+
 
 🌐 6. (Optional) Run the Streamlit UI
-bash
-Copy
-Edit
 streamlit run app/streamlit_ui.py
-This launches an interactive web app for document upload and query answering using your pipeline.
+
 
 💡 7. Example Query
 After everything is set up, you can:
