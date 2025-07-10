@@ -35,62 +35,74 @@ All agents communicate through **AutoGen group chat** using structured message p
 | LLM              | Mistral via LM Studio / Gemini Pro API |
 | Interface (opt)  | Streamlit (for end-to-end demo)        |
 
----
-
-## 📂 Folder Structure
-
 
 ---
 
-## 🧪 How to Run
-
-### 1. Clone the repo
-```bash
+🧪 How to Run the Project
+🔧 1. Clone the repository
+bash
+Copy
+Edit
 git clone https://github.com/yourusername/agentic-rag-pipeline.git
 cd agentic-rag-pipeline
+Replace yourusername with your actual GitHub username.
 
-
-2. Install dependencies
+📦 2. Set up a Python environment
+bash
+Copy
+Edit
+python -m venv venv
+source venv/bin/activate       # On Linux/Mac
+venv\Scripts\activate          # On Windows
+📥 3. Install dependencies
 bash
 Copy
 Edit
 pip install -r requirements.txt
-3. Start OpenSearch locally
+🔍 4. Start OpenSearch locally
+If you’re using Docker (recommended):
+
 bash
 Copy
 Edit
-./start_opensearch.sh   # or use Docker
-4. Run the pipeline
+docker run -d -p 9200:9200 -e "discovery.type=single-node" -e "plugins.security.disabled=true" opensearchproject/opensearch:latest
+Or use your local OpenSearch setup if already configured.
+
+🚀 5. Run the agentic RAG pipeline
 bash
 Copy
 Edit
 python app/rag_runner.py
-5. (Optional) Run the UI
+This script will orchestrate your AutoGen agents to extract, embed, index, retrieve, and answer using local LLMs or Gemini API.
+
+🌐 6. (Optional) Run the Streamlit UI
 bash
 Copy
 Edit
 streamlit run app/streamlit_ui.py
-🧠 Use Cases
-Customer feedback summarization from CRM exports
+This launches an interactive web app for document upload and query answering using your pipeline.
 
-Legal clause extraction and retrieval
+💡 7. Example Query
+After everything is set up, you can:
 
-Financial report Q&A
+Upload a CSV/Excel file with embedded text
 
-HR or Resume parsing & intelligent querying
+Ask a question like:
 
-💡 Coming Soon
-Agent memory + intermediate state tracking
+“Summarize customer pain points in the past quarter”
+“What do users complain about most?”
 
-Automatic logging + recovery from agent failures
+Your agentic system will:
 
-Hybrid cloud/local LLM fallback setup
+Extract unstructured data
 
-Dashboard to monitor agent performance
+Embed it
 
-👤 Author
-DSK (Dhruv S Kumar)
-Final year BTech student | AI Engineer in the making | 2.5 years gym discipline meets GenAI obsession 💪🧠
+Search relevant chunks via OpenSearch
 
-🏁 Goal
-To ship a real-world capable agentic GenAI system by end of 2025 — and prove that even with no prior income, no Ivy League degree, and no connections, discipline + vision = undeniable results.
+Answer the query using a local or API LLM
+
+
+
+
+
